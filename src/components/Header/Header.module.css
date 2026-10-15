@@ -1,6 +1,6 @@
 
 /* =========================================
-   HEADER - PARQUE DA FÉ
+   HEADER — GLASSMORPHISM PREMIUM
 ========================================= */
 
 .header {
@@ -8,15 +8,23 @@
   top: 0;
   left: 0;
   z-index: 100;
-
   width: 100%;
 
-  background: rgba(3, 25, 48, 0.94);
+  background: linear-gradient(
+    135deg,
+    rgba(5, 25, 48, 0.48),
+    rgba(8, 32, 57, 0.32),
+    rgba(5, 25, 48, 0.48)
+  );
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 12px 40px rgba(0, 0, 0, 0.12);
 
   transition:
     background 0.4s ease,
@@ -24,12 +32,36 @@
     border-color 0.4s ease;
 }
 
-/* APARÊNCIA APÓS ROLAGEM */
+/* Reflexo delicado na parte inferior */
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 70%;
+  height: 1px;
+  pointer-events: none;
 
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 140, 0.38),
+    transparent
+  );
+}
+
+/* Aparência após rolagem */
 .scrolled {
-  background: rgba(3, 25, 48, 0.98);
+  background: rgba(4, 23, 43, 0.78);
+
+  backdrop-filter: blur(28px) saturate(170%);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+
   border-bottom-color: rgba(243, 196, 107, 0.2);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* =========================================
@@ -41,21 +73,17 @@
 
   width: 100%;
   max-width: 1900px;
-  height: 185px;
+  height: 150px;
 
   margin: 0 auto;
   padding: 0 3%;
-
   box-sizing: border-box;
 
   display: grid;
-
   grid-template-columns:
     minmax(0, 1fr)
-    340px
+    290px
     minmax(0, 1fr);
-
-  grid-template-rows: 1fr;
 
   align-items: center;
   gap: 25px;
@@ -79,8 +107,8 @@
   justify-self: center;
   align-self: center;
 
-  width: 340px;
-  height: 185px;
+  width: 290px;
+  height: 150px;
 
   text-decoration: none;
 }
@@ -88,14 +116,14 @@
 .logoImage {
   display: block;
 
-  width: 330px;
-  height: 175px;
+  width: 280px;
+  height: 145px;
 
   max-width: 100%;
   object-fit: contain;
 
   filter: drop-shadow(
-    0 6px 16px rgba(0, 0, 0, 0.3)
+    0 6px 18px rgba(0, 0, 0, 0.32)
   );
 }
 
@@ -106,7 +134,6 @@
 .nav {
   display: flex;
   align-items: center;
-
   min-width: 0;
 
   gap: clamp(18px, 2vw, 36px);
@@ -133,19 +160,20 @@
 .nav a {
   position: relative;
 
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.94);
 
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 
-  letter-spacing: 0.045em;
+  letter-spacing: 0.065em;
   text-transform: uppercase;
   text-decoration: none;
-
   white-space: nowrap;
 
-  transition: color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
 }
 
 .nav a::after {
@@ -153,16 +181,18 @@
 
   position: absolute;
   left: 0;
-  bottom: -9px;
+  bottom: -10px;
 
   width: 0;
   height: 2px;
 
   background: linear-gradient(
     90deg,
-    #f3c46b,
-    #ffe5a4
+    #e9ad4b,
+    #ffe7ab
   );
+
+  border-radius: 3px;
 
   transition:
     width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -170,7 +200,8 @@
 
 .nav a:hover,
 .nav a:focus-visible {
-  color: #f3c46b;
+  color: #ffdc91;
+  text-shadow: 0 0 18px rgba(255, 210, 125, 0.22);
 }
 
 .nav a:hover::after,
@@ -179,23 +210,10 @@
 }
 
 /* =========================================
-   BOTÃO PLANEJE SUA VISITA
+   BOTÃO DOURADO
 ========================================= */
 
 .cta {
-  /*
-    CORREÇÃO PRINCIPAL:
-
-    O botão agora ocupa a terceira coluna
-    do Grid e fica centralizado verticalmente.
-
-    Não utilizamos top: 50% nem
-    transform: translateY(-50%).
-
-    Assim o Framer Motion pode animar
-    sem interferir no alinhamento.
-  */
-
   grid-column: 3;
   grid-row: 1;
 
@@ -212,20 +230,19 @@
   gap: 13px;
 
   width: max-content;
-  min-height: 50px;
-
-  padding: 0 23px;
+  min-height: 49px;
+  padding: 0 24px;
 
   box-sizing: border-box;
 
-  border: 1px solid rgba(255, 231, 170, 0.5);
+  border: 1px solid rgba(255, 235, 185, 0.65);
   border-radius: 100px;
 
   background: linear-gradient(
-    180deg,
-    #ffdc86 0%,
-    #f6bf58 55%,
-    #e7a33d 100%
+    135deg,
+    #ffe19a 0%,
+    #f6c463 50%,
+    #e8a83f 100%
   );
 
   color: #142033;
@@ -234,26 +251,30 @@
   font-size: 11px;
   font-weight: 800;
 
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-decoration: none;
   white-space: nowrap;
 
   box-shadow:
-    0 5px 18px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    0 6px 24px rgba(0, 0, 0, 0.18),
+    0 3px 18px rgba(237, 176, 70, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
 
-  transition: box-shadow 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
 }
 
 .cta:hover {
+  filter: brightness(1.07);
+
   box-shadow:
-    0 9px 28px rgba(0, 0, 0, 0.3),
-    0 0 22px rgba(246, 190, 88, 0.18);
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(246, 190, 88, 0.25);
 }
 
 .cta svg {
   flex-shrink: 0;
-
   transition: transform 0.3s ease;
 }
 
@@ -272,22 +293,27 @@
 
   width: 46px;
   height: 46px;
-
   padding: 0;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
 
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   color: #ffffff;
   cursor: pointer;
 
-  transition: background 0.3s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .menuButton:hover {
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 215, 145, 0.5);
 }
 
 .menuIcon {
@@ -297,7 +323,7 @@
 }
 
 /* =========================================
-   MENU MOBILE
+   MENU MOBILE — VIDRO ESCURO
 ========================================= */
 
 .mobileNav {
@@ -311,17 +337,19 @@
   flex-direction: column;
 
   box-sizing: border-box;
-
   padding: 12px 6% 28px;
-
   overflow: hidden;
 
-  background: rgba(3, 25, 48, 0.99);
+  background: rgba(4, 23, 43, 0.88);
 
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 215, 145, 0.15);
 
   box-shadow:
-    0 20px 35px rgba(0, 0, 0, 0.25);
+    0 25px 45px rgba(0, 0, 0, 0.3);
 }
 
 .mobileNav > a:not(.mobileCta) {
@@ -340,7 +368,7 @@
   text-decoration: none;
 
   border-bottom:
-    1px solid rgba(255, 255, 255, 0.08);
+    1px solid rgba(255, 255, 255, 0.09);
 
   transition:
     color 0.3s ease,
@@ -366,12 +394,11 @@
   padding: 12px 18px;
 
   box-sizing: border-box;
-
   border-radius: 100px;
 
   background: linear-gradient(
     135deg,
-    #ffdc86,
+    #ffe19a,
     #e7a33d
   );
 
@@ -391,24 +418,24 @@
 
 @media (max-width: 1550px) {
   .container {
-    height: 160px;
+    height: 135px;
 
     grid-template-columns:
       minmax(0, 1fr)
-      270px
+      250px
       minmax(0, 1fr);
 
     gap: 14px;
   }
 
   .logo {
-    width: 270px;
-    height: 160px;
+    width: 250px;
+    height: 135px;
   }
 
   .logoImage {
-    width: 265px;
-    height: 152px;
+    width: 245px;
+    height: 130px;
   }
 
   .nav {
@@ -424,7 +451,7 @@
   }
 
   .cta {
-    min-height: 48px;
+    min-height: 46px;
     padding: 0 15px;
     font-size: 10px;
   }
@@ -436,11 +463,11 @@
 
 @media (max-width: 1200px) {
   .container {
-    height: 125px;
+    height: 105px;
 
     grid-template-columns:
       minmax(0, 1fr)
-      250px
+      220px
       minmax(0, 1fr);
 
     padding: 0 5%;
@@ -448,14 +475,13 @@
 
   .logo {
     grid-column: 2;
-
-    width: 250px;
-    height: 125px;
+    width: 220px;
+    height: 105px;
   }
 
   .logoImage {
-    width: 245px;
-    height: 118px;
+    width: 215px;
+    height: 102px;
   }
 
   .nav,
@@ -480,11 +506,11 @@
 
 @media (max-width: 600px) {
   .container {
-    height: 105px;
+    height: 90px;
 
     grid-template-columns:
       minmax(0, 1fr)
-      205px
+      185px
       minmax(0, 1fr);
 
     padding: 0 5%;
@@ -492,13 +518,13 @@
   }
 
   .logo {
-    width: 205px;
-    height: 105px;
+    width: 185px;
+    height: 90px;
   }
 
   .logoImage {
-    width: 200px;
-    height: 99px;
+    width: 180px;
+    height: 87px;
   }
 
   .menuButton {
@@ -512,26 +538,26 @@
 }
 
 /* =========================================
-   CELULARES MUITO PEQUENOS
+   CELULARES PEQUENOS
 ========================================= */
 
 @media (max-width: 380px) {
   .container {
     grid-template-columns:
       minmax(0, 1fr)
-      175px
+      160px
       minmax(0, 1fr);
 
     gap: 4px;
   }
 
   .logo {
-    width: 175px;
+    width: 160px;
   }
 
   .logoImage {
-    width: 170px;
-    height: 95px;
+    width: 155px;
+    height: 85px;
   }
 
   .menuButton {
