@@ -30,8 +30,10 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   const reduceMotion = useReducedMotion();
 
+  // Detecta a rolagem da página
   useEffect(() => {
     const updateScroll = () => {
       setScrolled(window.scrollY > 30);
@@ -48,6 +50,7 @@ export default function Header() {
     };
   }, []);
 
+  // Fecha o menu com ESC
   useEffect(() => {
     if (!open) return;
 
@@ -64,47 +67,101 @@ export default function Header() {
     };
   }, [open]);
 
+  // Fecha o menu ao voltar para o desktop
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      "(min-width: 851px)"
+    );
+
+    const handleResize = () => {
+      if (mediaQuery.matches) {
+        setOpen(false);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => {
+      mediaQuery.removeEventListener(
+        "change",
+        handleResize
+      );
+    };
+  }, []);
+
+  // Navegação corrigida para desktop e mobile
   const navigateTo = (
     event: MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
-    const id = href.slice(1);
-    const section = document.getElementById(id);
+    const id = href.replace("#", "");
 
-    if (!section && id !== "inicio") {
+    const section =
+      id === "inicio"
+        ? null
+        : document.getElementById(id);
+
+    // Se a seção não existir, permite a navegação
+    // padrão do navegador e avisa no console.
+    if (id !== "inicio" && !section) {
       console.warn(
         `A seção com id="${id}" não foi encontrada.`
       );
+
       setOpen(false);
       return;
     }
 
     event.preventDefault();
-    setOpen(false);
 
-    const reduce = window.matchMedia(
+    const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const top =
+    const header = document.querySelector("header");
+
+    const headerHeight =
+      header?.getBoundingClientRect().height ?? 0;
+
+    const targetTop =
       id === "inicio"
         ? 0
-        : section!.getBoundingClientRect().top +
-          window.scrollY;
+        : Math.max(
+            0,
+            section!.getBoundingClientRect().top +
+              window.scrollY -
+              headerHeight -
+              12
+          );
 
-    window.scrollTo({
-      top,
-      behavior: reduce ? "auto" : "smooth",
-    });
-
+    // Atualiza o endereço
     window.history.replaceState(null, "", href);
+
+    // Fecha o menu antes de rolar
+    setOpen(false);
+
+    // Aguarda o início da atualização visual
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: targetTop,
+          behavior: prefersReducedMotion
+            ? "instant"
+            : "smooth",
+        });
+      });
+    });
   };
 
   const navAnimation = {
     initial: reduceMotion
       ? false
       : { opacity: 0, y: -18 },
-    animate: { opacity: 1, y: 0 },
+
+    animate: {
+      opacity: 1,
+      y: 0,
+    },
   };
 
   return (
@@ -117,7 +174,10 @@ export default function Header() {
           ? false
           : { opacity: 0, y: -25 }
       }
-      animate={{ opacity: 1, y: 0 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
       transition={{
         duration: 0.9,
         ease,
@@ -144,7 +204,9 @@ export default function Header() {
                 ease,
               }}
               whileHover={
-                reduceMotion ? undefined : { y: -2 }
+                reduceMotion
+                  ? undefined
+                  : { y: -2 }
               }
             >
               {link.label}
@@ -163,7 +225,11 @@ export default function Header() {
           initial={
             reduceMotion
               ? false
-              : { opacity: 0, y: -20, scale: 0.94 }
+              : {
+                  opacity: 0,
+                  y: -20,
+                  scale: 0.94,
+                }
           }
           animate={{
             opacity: 1,
@@ -211,7 +277,9 @@ export default function Header() {
                 ease,
               }}
               whileHover={
-                reduceMotion ? undefined : { y: -2 }
+                reduceMotion
+                  ? undefined
+                  : { y: -2 }
               }
             >
               {link.label}
@@ -231,7 +299,10 @@ export default function Header() {
               ? false
               : { opacity: 0, x: 18 }
           }
-          animate={{ opacity: 1, x: 0 }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
           transition={{
             duration: 0.85,
             delay: 0.9,
@@ -255,7 +326,7 @@ export default function Header() {
           />
         </motion.a>
 
-        {/* BOTÃO MOBILE */}
+        {/* BOTÃO HAMBÚRGUER */}
         <motion.button
           type="button"
           className={styles.menuButton}
@@ -271,7 +342,10 @@ export default function Header() {
               : { scale: 0.9 }
           }
         >
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence
+            mode="wait"
+            initial={false}
+          >
             <motion.span
               key={open ? "close" : "menu"}
               className={styles.menuIcon}
@@ -298,9 +372,15 @@ export default function Header() {
                       scale: 0.7,
                     }
               }
-              transition={{ duration: 0.2 }}
+              transition={{
+                duration: 0.2,
+              }}
             >
-              {open ? <X size={27} /> : <Menu size={27} />}
+              {open ? (
+                <X size={27} />
+              ) : (
+                <Menu size={27} />
+              )}
             </motion.span>
           </AnimatePresence>
         </motion.button>
@@ -337,7 +417,9 @@ export default function Header() {
                   }
             }
             transition={{
-              duration: reduceMotion ? 0 : 0.4,
+              duration: reduceMotion
+                ? 0
+                : 0.4,
               ease,
             }}
           >
@@ -351,26 +433,35 @@ export default function Header() {
                 initial={
                   reduceMotion
                     ? false
-                    : { opacity: 0, x: -12 }
+                    : {
+                        opacity: 0,
+                        x: -12,
+                      }
                 }
-                animate={{ opacity: 1, x: 0 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
                 exit={
                   reduceMotion
                     ? undefined
-                    : { opacity: 0, x: -8 }
+                    : {
+                        opacity: 0,
+                        x: -8,
+                      }
                 }
                 transition={{
                   duration: 0.35,
                   delay: reduceMotion
                     ? 0
                     : 0.08 + index * 0.055,
-                  ease,
                 }}
               >
                 {link.label}
               </motion.a>
             ))}
 
+            {/* CTA MOBILE */}
             <motion.a
               href="#contato"
               className={styles.mobileCta}
@@ -380,17 +471,27 @@ export default function Header() {
               initial={
                 reduceMotion
                   ? false
-                  : { opacity: 0, y: 10 }
+                  : {
+                      opacity: 0,
+                      y: 10,
+                    }
               }
-              animate={{ opacity: 1, y: 0 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
               exit={
                 reduceMotion
                   ? undefined
-                  : { opacity: 0 }
+                  : {
+                      opacity: 0,
+                    }
               }
               transition={{
                 duration: 0.4,
-                delay: reduceMotion ? 0 : 0.4,
+                delay: reduceMotion
+                  ? 0
+                  : 0.4,
                 ease,
               }}
             >
