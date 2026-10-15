@@ -1,0 +1,737 @@
+/* =========================================
+   ATRAÇÕES - PARQUE DA FÉ
+========================================= */
+
+.section {
+  width: 100%;
+  padding: 85px 0 100px;
+  background: #faf8f4;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 3%;
+}
+
+/* CABEÇALHO */
+
+.heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 42px;
+}
+
+.headingLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.headingRight {
+  width: 350px;
+  flex-shrink: 0;
+  padding-bottom: 8px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #343c45;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.sparkle {
+  color: #c58b3c;
+  font-size: 13px;
+}
+
+.title {
+  margin: 14px 0 0;
+  color: #111b29;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 4vw, 66px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.headingRight p {
+  max-width: 350px;
+  margin: 0 0 22px;
+
+  color: #3e4650;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #172131;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+
+  transition: color 0.3s ease;
+}
+
+.viewAll:hover {
+  color: #c18b42;
+}
+
+.viewAll svg {
+  transition: transform 0.3s ease;
+}
+
+.viewAll:hover svg {
+  transform: translateX(4px);
+}
+
+/* GRADE */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  scroll-margin-top: 120px;
+}
+
+/* CARDS */
+
+.card {
+  min-width: 0;
+  overflow: hidden;
+
+  background: #ffffff;
+  border: 1px solid #eae5dc;
+  border-radius: 10px;
+
+  box-shadow: 0 4px 12px rgba(24, 31, 39, 0.04);
+
+  transition:
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.card:hover {
+  border-color: rgba(197, 139, 60, 0.4);
+
+  box-shadow:
+    0 20px 42px rgba(24, 31, 39, 0.14),
+    0 5px 15px rgba(197, 139, 60, 0.06);
+}
+
+.cardButton {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cardButton:focus-visible {
+  outline: 3px solid #e5ae51;
+  outline-offset: -3px;
+}
+
+/* IMAGEM DOS CARDS */
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 185px;
+  overflow: hidden;
+  background: #c8b292;
+}
+
+.imageWrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    rgba(7, 22, 35, 0.15) 100%
+  );
+
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.card:hover .imageWrapper::after {
+  opacity: 1;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.09);
+  filter: saturate(1.07);
+}
+
+/* TEXTO DOS CARDS */
+
+.cardBody {
+  position: relative;
+  min-height: 103px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 8px;
+  padding: 16px 12px 17px 15px;
+}
+
+.cardText {
+  min-width: 0;
+  flex: 1;
+}
+
+.cardText h3 {
+  margin: 0 0 6px;
+
+  color: #17202c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  transition: color 0.3s ease;
+}
+
+.card:hover .cardText h3 {
+  color: #a97734;
+}
+
+.cardText p {
+  margin: 0;
+
+  color: #71767c;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* SETA CIRCULAR */
+
+.arrow {
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+  align-self: flex-end;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e8b56a;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #c28a3d;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .arrow {
+  background: #eeb85e;
+  color: #142033;
+  transform: rotate(45deg);
+}
+
+/* =========================================
+   MODAL - FUNDO
+========================================= */
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100dvh;
+  padding: 20px;
+  overflow-y: auto;
+
+  background: rgba(2, 12, 25, 0.78);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* CARD DO MODAL */
+
+.modalCard {
+  position: relative;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  width: 100%;
+  max-width: 1050px;
+  max-height: calc(100dvh - 40px);
+
+  margin: auto;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 22px;
+
+  background: rgba(12, 32, 49, 0.96);
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* IMAGEM DO MODAL */
+
+.modalImage {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  background: #132b3b;
+}
+
+.modalImageContent {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* CONTEÚDO DO MODAL */
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 0;
+  overflow-y: auto;
+  padding: clamp(30px, 4vw, 65px);
+}
+
+.modalEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 22px;
+
+  color: #f2c879;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.modalBody h3 {
+  margin: 0;
+
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(35px, 3.5vw, 57px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.modalDivider {
+  display: block;
+  width: 55px;
+  height: 2px;
+  flex-shrink: 0;
+
+  margin: 25px 0;
+
+  background: linear-gradient(
+    90deg,
+    #f6d28d,
+    #d89a3d
+  );
+}
+
+.modalBody p {
+  margin: 0;
+
+  color: #d7e0e7;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.modalLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+  width: fit-content;
+
+  margin-top: 35px;
+  padding: 13px 0;
+
+  border-bottom: 1px solid rgba(246, 205, 123, 0.5);
+
+  color: #f6cd7b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    gap 0.3s ease;
+}
+
+.modalLink:hover {
+  color: #ffffff;
+  gap: 28px;
+}
+
+/* BOTÃO FECHAR MODAL */
+
+.modalClose {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+
+  background: rgba(5, 19, 33, 0.85);
+  color: #ffffff;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.modalClose:hover {
+  transform: rotate(90deg);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.modalClose:focus-visible,
+.modalLink:focus-visible {
+  outline: 3px solid #f6cd7b;
+  outline-offset: 4px;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1450px) {
+  .grid {
+    gap: 14px;
+  }
+
+  .imageWrapper {
+    height: 160px;
+  }
+
+  .cardText h3 {
+    font-size: 15px;
+  }
+
+  .cardText p {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .section {
+    padding: 75px 0 85px;
+  }
+
+  .container {
+    padding: 0 4%;
+  }
+
+  .heading {
+    gap: 30px;
+  }
+
+  .headingRight {
+    width: 290px;
+  }
+
+  .title {
+    font-size: clamp(36px, 4.3vw, 52px);
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .imageWrapper {
+    height: 190px;
+  }
+
+  .cardBody {
+    min-height: 100px;
+  }
+
+  .cardText h3 {
+    font-size: 17px;
+  }
+
+  .cardText p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 900px) {
+  .modalCard {
+    grid-template-columns: 1fr;
+    max-width: 650px;
+    overflow-y: auto;
+  }
+
+  .modalImage {
+    min-height: 0;
+    height: 280px;
+  }
+
+  .modalBody {
+    overflow: visible;
+    padding: 35px;
+  }
+
+  .modalBody h3 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 65px 0 75px;
+  }
+
+  .container {
+    padding: 0 5%;
+  }
+
+  .heading {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 22px;
+    margin-bottom: 30px;
+  }
+
+  .headingRight {
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .headingRight p {
+    max-width: 520px;
+    margin-bottom: 15px;
+  }
+
+  .title {
+    font-size: clamp(36px, 6vw, 48px);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .imageWrapper {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 55px 0 65px;
+  }
+
+  .container {
+    padding: 0 5%;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+  }
+
+  .title {
+    margin-top: 12px;
+    font-size: clamp(32px, 8vw, 42px);
+    line-height: 1.1;
+  }
+
+  .headingRight p {
+    font-size: 12px;
+  }
+
+  /* CARROSSEL HORIZONTAL MOBILE */
+
+  .grid {
+    display: flex;
+    gap: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 4px 0 18px;
+
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #d8bb8a transparent;
+  }
+
+  .card {
+    flex: 0 0 245px;
+    scroll-snap-align: start;
+  }
+
+  .imageWrapper {
+    height: 165px;
+  }
+
+  .cardBody {
+    min-height: 95px;
+  }
+
+  .cardText h3 {
+    font-size: 16px;
+  }
+
+  .cardText p {
+    font-size: 11px;
+  }
+
+  /* MODAL MOBILE */
+
+  .modalBackdrop {
+    padding: 14px;
+  }
+
+  .modalCard {
+    max-height: calc(100dvh - 28px);
+    border-radius: 16px;
+  }
+
+  .modalImage {
+    height: 210px;
+  }
+
+  .modalBody {
+    padding: 27px 24px 30px;
+  }
+
+  .modalEyebrow {
+    margin-bottom: 15px;
+    font-size: 9px;
+  }
+
+  .modalBody h3 {
+    font-size: clamp(31px, 8vw, 40px);
+  }
+
+  .modalDivider {
+    margin: 18px 0;
+  }
+
+  .modalBody p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .modalLink {
+    margin-top: 24px;
+    font-size: 10px;
+  }
+
+  .modalClose {
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image,
+  .imageWrapper::after,
+  .cardText h3,
+  .arrow,
+  .viewAll,
+  .viewAll svg,
+  .modalClose,
+  .modalLink {
+    transition: none;
+  }
+}
+
+@media (hover: none) {
+  .card:hover .image {
+    transform: none;
+    filter: none;
+  }
+
+  .card:hover .imageWrapper::after {
+    opacity: 0;
+  }
+}

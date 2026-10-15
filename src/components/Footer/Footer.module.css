@@ -1,0 +1,807 @@
+
+/* =========================================
+   FOOTER - PARQUE DA FÉ
+========================================= */
+
+.footer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  background: #041a2e;
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer * {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   ÁREA PRINCIPAL
+========================================= */
+
+.main {
+  position: relative;
+
+  padding: 95px 6% 100px;
+
+  background:
+    radial-gradient(
+      ellipse at 85% 85%,
+      rgba(191, 118, 49, 0.13) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 15% 0%,
+      rgba(33, 83, 124, 0.23) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #031526 0%,
+      #061d33 55%,
+      #0b253d 100%
+    );
+}
+
+.container {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   GRID PRINCIPAL
+========================================= */
+
+.top {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.3fr)
+    minmax(0, 0.8fr)
+    minmax(0, 1fr)
+    minmax(0, 1.1fr);
+
+  gap: clamp(28px, 4vw, 70px);
+  align-items: start;
+}
+
+/* =========================================
+   MARCA
+========================================= */
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-width: 0;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  text-decoration: none;
+  transform-origin: center;
+}
+
+.logo {
+  display: block;
+
+  width: 235px;
+  height: 175px;
+  max-width: 100%;
+
+  object-fit: contain;
+  object-position: left center;
+
+  filter: drop-shadow(
+    0 6px 15px rgba(0, 0, 0, 0.18)
+  );
+}
+
+.brandDescription {
+  max-width: 310px;
+  margin: 20px 0 0;
+
+  color: #c4cdd6;
+  font-size: 14px;
+  line-height: 1.95;
+}
+
+/* =========================================
+   TÍTULOS
+========================================= */
+
+.columnTitle {
+  margin: 0;
+
+  color: #f5c674;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.titleLine {
+  display: block;
+
+  width: 42px;
+  height: 2px;
+
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  background: linear-gradient(
+    90deg,
+    #f6d58d,
+    #d99c44
+  );
+}
+
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
+
+.links {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  gap: 20px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  width: 100%;
+  max-width: 190px;
+
+  color: #d3dbe3;
+  font-size: 14px;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.navLink svg {
+  flex-shrink: 0;
+
+  color: #e8ae53;
+  opacity: 0;
+
+  transform: translateX(-6px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navLink:hover {
+  color: #f5c674;
+}
+
+.navLink:hover svg {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =========================================
+   CONTATO
+========================================= */
+
+.contact {
+  min-width: 0;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+
+  gap: 27px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  color: #d3dbe3;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.contactItem svg {
+  flex-shrink: 0;
+  color: #e8ae53;
+}
+
+/* =========================================
+   REDES SOCIAIS
+========================================= */
+
+.socialSection {
+  margin-top: 44px;
+  padding-top: 27px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.12);
+}
+
+.socialSection .titleLine {
+  margin-bottom: 24px;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 47px;
+  height: 47px;
+
+  border: 1px solid rgba(237, 179, 85, 0.7);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.02);
+  color: #f5c674;
+
+  text-decoration: none;
+  transform-origin: center;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.socialLink:hover {
+  background: #f2bc64;
+  color: #071c30;
+  border-color: #f2bc64;
+}
+
+/* =========================================
+   CHAMADA FINAL
+========================================= */
+
+.news {
+  min-width: 0;
+}
+
+.news p {
+  max-width: 280px;
+  margin: 0;
+
+  color: #d3dbe3;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  min-height: 54px;
+  margin-top: 30px;
+  padding: 0 26px;
+
+  border: 1px solid rgba(255, 231, 172, 0.55);
+  border-radius: 100px;
+
+  background: linear-gradient(
+    180deg,
+    #ffe09a 0%,
+    #f6c56d 50%,
+    #e8a747 100%
+  );
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+  color: #0b2034;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transform-origin: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.button:hover {
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.button svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.button:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* =========================================
+   SEÇÃO DE REALIZAÇÃO E APOIO
+========================================= */
+
+.partnersSection {
+  position: relative;
+  width: 100%;
+
+  padding: 85px 5% 95px;
+
+  background: linear-gradient(
+    180deg,
+    #061d33 0%,
+    #041a2e 100%
+  );
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.1);
+}
+
+.partnersContainer {
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+}
+
+/* GRID DAS LOGOS */
+
+.partners {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  align-items: start;
+  justify-items: center;
+
+  column-gap: clamp(40px, 6vw, 120px);
+  row-gap: 65px;
+
+  width: 100%;
+}
+
+/* BLOCO DE CADA PARCEIRO */
+
+.partner {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  min-width: 0;
+
+  text-align: center;
+}
+
+/* TÍTULO REALIZAÇÃO / APOIO */
+
+.partnerTitle {
+  margin: 0;
+
+  color: #f5c674;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* LINHA DOURADA ABAIXO DO TÍTULO */
+
+.partnerTitleLine {
+  display: block;
+
+  width: 85px;
+  height: 3px;
+
+  margin-top: 15px;
+  margin-bottom: 40px;
+
+  background: linear-gradient(
+    90deg,
+    #e6a846,
+    #ffe09a,
+    #e6a846
+  );
+
+  border-radius: 10px;
+}
+
+/* ÁREA DA LOGO */
+
+.partnerLogo {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 650px;
+
+  min-height: 240px;
+
+  padding: 0;
+
+  /* Sem bordas e sem cartões */
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* IMAGEM DA LOGO */
+
+.partnerImage {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: 650px;
+  max-height: 350px;
+
+  object-fit: contain;
+  object-position: center;
+
+  filter: drop-shadow(
+    0 8px 18px rgba(0, 0, 0, 0.12)
+  );
+
+  transition:
+    transform 0.4s cubic-bezier(
+      0.22, 1, 0.36, 1
+    );
+}
+
+.partnerLogo:hover .partnerImage {
+  transform: scale(1.035);
+}
+
+/* =========================================
+   FAIXA INFERIOR - COPYRIGHT
+========================================= */
+
+.bottom {
+  position: relative;
+
+  width: 100%;
+  padding: 30px 6%;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  background: #031526;
+}
+
+.bottomContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 1450px;
+
+  margin: 0 auto;
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+  margin: 0;
+
+  color: #aebac6;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  text-align: center;
+}
+
+.goldDot {
+  display: inline-block;
+  flex-shrink: 0;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #eebd6c;
+}
+
+/* =========================================
+   NOTEBOOKS
+========================================= */
+
+@media (max-width: 1200px) {
+  .main {
+    padding: 80px 5%;
+  }
+
+  .top {
+    gap: 30px;
+
+    grid-template-columns:
+      1.2fr 0.7fr 1fr 1fr;
+  }
+
+  .logo {
+    width: 210px;
+    height: 155px;
+  }
+
+  .button {
+    padding: 0 19px;
+    gap: 12px;
+  }
+
+  .partnersSection {
+    padding: 75px 5% 85px;
+  }
+
+  .partners {
+    column-gap: 45px;
+  }
+
+  .partnerLogo {
+    max-width: 520px;
+    min-height: 200px;
+  }
+
+  .partnerImage {
+    max-width: 520px;
+  }
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 950px) {
+  .main {
+    padding: 70px 6% 75px;
+  }
+
+  .top {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    column-gap: 45px;
+    row-gap: 60px;
+  }
+
+  .brandDescription {
+    max-width: 340px;
+  }
+
+  .partnersSection {
+    padding: 65px 6% 75px;
+  }
+
+  .partners {
+    column-gap: 30px;
+  }
+
+  .partnerTitle {
+    font-size: 19px;
+  }
+
+  .partnerTitleLine {
+    margin-bottom: 30px;
+  }
+
+  .partnerLogo {
+    min-height: 160px;
+  }
+}
+
+/* =========================================
+   CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+  .main {
+    padding: 65px 6% 70px;
+  }
+
+  .top {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo {
+    width: 220px;
+    height: 165px;
+    object-position: center;
+  }
+
+  .brandDescription {
+    max-width: 330px;
+    margin-top: 15px;
+    font-size: 13px;
+  }
+
+  .columnTitle {
+    font-size: 11px;
+  }
+
+  .titleLine {
+    margin-top: 15px;
+    margin-bottom: 24px;
+  }
+
+  .linksList {
+    gap: 17px;
+  }
+
+  .navLink {
+    max-width: 100%;
+  }
+
+  .contactList {
+    gap: 22px;
+  }
+
+  .socialSection {
+    margin-top: 35px;
+  }
+
+  .news p {
+    max-width: 100%;
+  }
+
+  .button {
+    min-height: 52px;
+    margin-top: 25px;
+  }
+
+  /* PARCEIROS MOBILE */
+
+  .partnersSection {
+    padding: 60px 6% 70px;
+  }
+
+  .partners {
+    grid-template-columns: 1fr;
+
+    row-gap: 65px;
+  }
+
+  .partner {
+    width: 100%;
+  }
+
+  .partnerTitle {
+    font-size: 20px;
+  }
+
+  .partnerTitleLine {
+    width: 70px;
+    margin-bottom: 25px;
+  }
+
+  .partnerLogo {
+    width: 100%;
+    max-width: 420px;
+    min-height: 0;
+  }
+
+  .partnerImage {
+    width: 100%;
+    max-width: 420px;
+    max-height: 260px;
+  }
+
+  .bottom {
+    padding: 30px 6%;
+  }
+
+  .copyright {
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   CELULARES PEQUENOS
+========================================= */
+
+@media (max-width: 380px) {
+  .partnerTitle {
+    font-size: 18px;
+  }
+
+  .partners {
+    row-gap: 50px;
+  }
+
+  .partnerLogo {
+    max-width: 100%;
+  }
+
+  .partnerImage {
+    max-height: 220px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+.logoLink:focus-visible,
+.navLink:focus-visible,
+.socialLink:focus-visible,
+.button:focus-visible {
+  outline: 3px solid #f5c674;
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoLink,
+  .navLink,
+  .navLink svg,
+  .socialLink,
+  .button,
+  .button svg,
+  .partnerImage {
+    transition: none;
+  }
+
+  .partnerLogo:hover .partnerImage {
+    transform: none;
+  }
+}

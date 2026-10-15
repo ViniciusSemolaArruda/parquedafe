@@ -1,0 +1,496 @@
+
+/* =========================================
+   HERO - PARQUE DA FÉ
+========================================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: max(720px, 100svh);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background-color: #071c30;
+  color: #ffffff;
+}
+
+/* IMAGEM CINEMATOGRÁFICA */
+
+.background {
+  position: absolute;
+  inset: -10% 0;
+  z-index: 0;
+
+  background-image: url("/images/hero.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* SOBREPOSIÇÃO DA IMAGEM */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 16, 31, 0.32) 0%,
+      rgba(2, 16, 31, 0.13) 28%,
+      rgba(2, 16, 31, 0.2) 60%,
+      rgba(2, 16, 31, 0.32) 100%
+    ),
+    radial-gradient(
+      ellipse at 50% 42%,
+      rgba(3, 13, 27, 0.27) 0%,
+      rgba(3, 13, 27, 0.05) 50%,
+      transparent 75%
+    );
+}
+
+/* CONTEÚDO CENTRAL */
+
+.content {
+  position: relative;
+  z-index: 2;
+
+  width: min(100% - 40px, 1000px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+  padding: 230px 0 95px;
+
+  text-align: center;
+}
+
+/* TÍTULO PRINCIPAL */
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* PARQUE DA */
+
+.titleTop {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: clamp(30px, 4.4vw, 68px);
+  font-weight: 400;
+  line-height: 1.05;
+
+  letter-spacing: 0.065em;
+
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* FÉ */
+
+.titleMain {
+  display: block;
+
+  margin-top: -9px;
+  padding-right: 0.065em;
+
+  font-size: clamp(125px, 19vw, 295px);
+  font-weight: 400;
+  line-height: 0.91;
+
+  letter-spacing: -0.065em;
+
+  background: linear-gradient(
+    115deg,
+    #fff7df 4%,
+    #f6d78b 28%,
+    #f0b84e 48%,
+    #fffdf5 72%,
+    #e5b45c 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(
+    0 6px 18px rgba(0, 0, 0, 0.2)
+  );
+}
+
+/* SUBTÍTULO */
+
+.subtitle {
+  margin: 28px 0 0;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(12px, 1.35vw, 19px);
+  font-weight: 500;
+  line-height: 1.55;
+
+  letter-spacing: 0.22em;
+  text-align: center;
+
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+}
+
+/* BOTÃO CONHEÇA O PROJETO */
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 22px;
+  min-height: 58px;
+
+  margin-top: 32px;
+  padding: 0 34px;
+
+  border-radius: 100px;
+  border: 1px solid rgba(255, 239, 190, 0.5);
+
+  background: linear-gradient(
+    180deg,
+    #ffdc86 0%,
+    #f7bf58 55%,
+    #e6a33c 100%
+  );
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  color: #102034;
+  text-decoration: none;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.085em;
+  white-space: nowrap;
+
+  transition:
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.primary:hover {
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.3),
+    0 0 25px rgba(246, 190, 88, 0.25);
+}
+
+.primary svg {
+  transition: transform 0.3s ease;
+}
+
+.primary:hover svg {
+  transform: translateX(4px);
+}
+
+.primary:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* INDICADOR DE ROLAGEM */
+
+.scroll {
+  position: absolute;
+  z-index: 3;
+
+  bottom: 30px;
+  left: 50%;
+
+  translate: -50% 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  transition: opacity 0.3s ease;
+}
+
+.scroll:hover {
+  opacity: 0.8;
+}
+
+/* MOUSE */
+
+.mouse {
+  width: 26px;
+  height: 43px;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 9px;
+
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+}
+
+.mouseWheel {
+  width: 3px;
+  height: 8px;
+
+  border-radius: 10px;
+  background: #ffffff;
+
+  animation: scrollWheel 1.8s ease-in-out infinite;
+}
+
+/* TEXTO */
+
+.scrollText {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* SETA */
+
+.scrollArrow {
+  margin-top: -6px;
+  animation: arrowBounce 1.8s ease-in-out infinite;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes scrollWheel {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  75% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* DESKTOPS COM ALTURA MENOR */
+
+@media (min-width: 1151px) and (max-height: 780px) {
+  .hero {
+    min-height: 720px;
+  }
+
+  .content {
+    padding-top: 225px;
+    padding-bottom: 90px;
+  }
+
+  .titleTop {
+    font-size: clamp(30px, 4vw, 60px);
+  }
+
+  .titleMain {
+    font-size: clamp(125px, 17vw, 255px);
+  }
+
+  .subtitle {
+    margin-top: 20px;
+  }
+
+  .primary {
+    margin-top: 25px;
+  }
+}
+
+/* NOTEBOOKS E TELAS MÉDIAS */
+
+@media (max-width: 1150px) {
+  .hero {
+    min-height: max(680px, 100svh);
+  }
+
+  .content {
+    padding: 185px 0 105px;
+  }
+
+  .titleTop {
+    font-size: clamp(32px, 5vw, 54px);
+  }
+
+  .titleMain {
+    font-size: clamp(135px, 22vw, 235px);
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+}
+
+/* TABLETS */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: max(640px, 100svh);
+  }
+
+  .background {
+    background-position: center center;
+  }
+
+  .content {
+    width: calc(100% - 36px);
+    padding: 155px 0 105px;
+  }
+
+  .titleTop {
+    font-size: clamp(29px, 5.8vw, 44px);
+  }
+
+  .titleMain {
+    font-size: clamp(125px, 25vw, 195px);
+  }
+
+  .subtitle {
+    margin-top: 22px;
+    font-size: clamp(11px, 1.9vw, 14px);
+    letter-spacing: 0.16em;
+  }
+
+  .primary {
+    min-height: 54px;
+    margin-top: 27px;
+    padding: 0 28px;
+  }
+
+  .scroll {
+    bottom: 25px;
+  }
+}
+
+/* CELULARES */
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: max(600px, 100svh);
+  }
+
+  .overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(2, 16, 31, 0.4) 0%,
+      rgba(2, 16, 31, 0.16) 30%,
+      rgba(2, 16, 31, 0.25) 65%,
+      rgba(2, 16, 31, 0.45) 100%
+    );
+  }
+
+  .content {
+    width: calc(100% - 28px);
+    padding: 140px 0 105px;
+  }
+
+  .titleTop {
+    font-size: clamp(26px, 7.5vw, 37px);
+    letter-spacing: 0.045em;
+  }
+
+  .titleMain {
+    margin-top: -3px;
+    font-size: clamp(115px, 33vw, 165px);
+  }
+
+  .subtitle {
+    margin-top: 24px;
+    font-size: 10px;
+    line-height: 1.7;
+    letter-spacing: 0.12em;
+  }
+
+  .primary {
+    min-height: 50px;
+    gap: 16px;
+    margin-top: 27px;
+    padding: 0 25px;
+    font-size: 10px;
+  }
+
+  .scroll {
+    bottom: 24px;
+  }
+
+  .scrollText {
+    font-size: 8px;
+  }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+  .background {
+    will-change: auto;
+  }
+
+  .mouseWheel,
+  .scrollArrow {
+    animation: none;
+  }
+
+  .primary,
+  .primary svg,
+  .scroll {
+    transition: none;
+  }
+}
