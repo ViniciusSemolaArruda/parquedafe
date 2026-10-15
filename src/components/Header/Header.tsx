@@ -89,7 +89,7 @@ export default function Header() {
     };
   }, []);
 
-  // Navegação corrigida para desktop e mobile
+  // Navegação para o início exato de cada seção
   const navigateTo = (
     event: MouseEvent<HTMLAnchorElement>,
     href: string
@@ -101,8 +101,6 @@ export default function Header() {
         ? null
         : document.getElementById(id);
 
-    // Se a seção não existir, permite a navegação
-    // padrão do navegador e avisa no console.
     if (id !== "inicio" && !section) {
       console.warn(
         `A seção com id="${id}" não foi encontrada.`
@@ -118,29 +116,20 @@ export default function Header() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const header = document.querySelector("header");
-
-    const headerHeight =
-      header?.getBoundingClientRect().height ?? 0;
-
+    // Não desconta a altura do Header
     const targetTop =
       id === "inicio"
         ? 0
-        : Math.max(
-            0,
-            section!.getBoundingClientRect().top +
-              window.scrollY -
-              headerHeight -
-              12
-          );
+        : section!.getBoundingClientRect().top +
+          window.scrollY;
 
-    // Atualiza o endereço
+    // Atualiza a URL
     window.history.replaceState(null, "", href);
 
-    // Fecha o menu antes de rolar
+    // Fecha o menu mobile
     setOpen(false);
 
-    // Aguarda o início da atualização visual
+    // Executa a rolagem após atualizar o menu
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         window.scrollTo({
